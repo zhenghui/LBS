@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>zhenghui</groupId>
+    <artifactId>lbs</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+    </properties>
+
+    <name>lbs-framework</name>
+    <url>https://github.com/zhenghui/LBS</url>
+
+    <developers>
+        <developer>
+            <id>zhenghui</id>
+            <name>正回</name>
+            <email>jingbo2759@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>base</module>
+    </modules>
+
+</project>
