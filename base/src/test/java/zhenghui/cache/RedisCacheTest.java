@@ -1,6 +1,7 @@
 package zhenghui.cache;
 
 import org.junit.Test;
+import redis.clients.jedis.Jedis;
 
 /**
  * User: zhenghui
@@ -15,5 +16,6 @@ public class RedisCacheTest {
         Jedis jedis = new Jedis("localhost");
         jedis.set("foo", "bar");
         String value = jedis.get("foo");
+        System.out.println(value);
     }
 }

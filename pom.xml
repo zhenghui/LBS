@@ -10,6 +10,8 @@
 
 
     <properties>
+        <jedis-version>2.6.0</jedis-version>
+        <junit-version>4.11</junit-version>
     </properties>
 
     <name>lbs-framework</name>
@@ -35,14 +37,14 @@
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
-                <version>2.6.0</version>
+                <version>${jedis-version}</version>
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>${junit-version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
