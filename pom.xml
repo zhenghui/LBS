@@ -10,7 +10,7 @@
 
 
     <properties>
-        <jedis-version>2.6.0</jedis-version>
+        <jedis-version>2.6.1</jedis-version>
         <junit-version>4.11</junit-version>
     </properties>
 
