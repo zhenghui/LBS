@@ -17,11 +17,10 @@ public interface CacheManager {
      * 前缀put
      * @param pkey/skey 主/子key
      * @param value 值
-     * @param version 数据版本号
      * @param expireTime 过期时间，单位秒
      * @return true 成功 false 失败
      */
-    public boolean prefixPut(Serializable pkey, Serializable sKey, Serializable value, int version, int expireTime);
+    public boolean prefixPut(Serializable pkey, Serializable sKey, Serializable value, int expireTime);
 
     /**
      *
