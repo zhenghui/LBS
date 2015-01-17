@@ -20,7 +20,7 @@ public interface CacheManager {
      * @param expireTime 过期时间，单位秒
      * @return true 成功 false 失败
      */
-    public boolean prefixPut(Serializable pkey, Serializable sKey, Serializable value, int expireTime);
+    public boolean prefixPut(String pkey, String sKey, Serializable value, int expireTime);
 
     /**
      *
@@ -29,7 +29,7 @@ public interface CacheManager {
      * @param skey 子key
      * @return 缓存对象
      */
-    public Serializable get(Serializable pkey,Serializable skey);
+    public Serializable get(String pkey,String skey);
 
 
     /**
@@ -37,16 +37,15 @@ public interface CacheManager {
      * @param pkey 父key
      * @param skey 子key
      */
-    public void invalid(Serializable pkey,Serializable skey);
+    public void invalid(String pkey,String skey);
 
     /**
      * 前缀gets
      * @param pkey 父key
-     * @param start 开始个数，默认0个第一个
      * @param limit 最多一次性获取几个
      * @return 对象列表
      */
-    public List<Serializable> prefixGets(Serializable pkey,int start, int limit);
+    public List<Serializable> prefixGets(String pkey,int limit);
 
 
 }

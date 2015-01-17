@@ -9,6 +9,7 @@ import zhenghui.util.SerializeUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * User: zhenghui
@@ -60,17 +61,17 @@ public class RedisCacheTest {
     @SuppressWarnings("unchecked")
     public void testPrefixGet(){
 
-        Map<String,String> map = new HashMap<String, String>(){
-            {
-                put("key1","value1");
-                put("key2","value2");
-                put("key3","value3");
-            }
-
-            private static final long serialVersionUID = -5278020639813324497L;
-        };
-//        Map<String,String> map = new HashMap<String, String>();
-//        map.put("key1","value1");
+//        Map<String,String> map = new HashMap<String, String>(){
+//            {
+//                put("key1","value1");
+//                put("key2","value2");
+//                put("key3","value3");
+//            }
+//
+//            private static final long serialVersionUID = -5278020639813324497L;
+//        };
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("key1","value1");
 
         byte[] bytes = SerializeUtil.serialize(map);
         System.out.println(bytes.length);
@@ -78,6 +79,28 @@ public class RedisCacheTest {
         jedis.set(prefixKey.getBytes(), bytes);
         Map<String,String> mapValue = (Map<String, String>) SerializeUtil.unserialize(jedis.get(prefixKey.getBytes()));
         System.out.println(mapValue);
+    }
+
+    @Test
+    public void testPrefixGetByKeys(){
+        Foo foo1 = new Foo().setName("foo1");
+        Foo foo11 = new Foo().setName("foo11");
+        Foo foo111 = new Foo().setName("foo111");
+        Foo foo2 = new Foo().setName("foo2");
+
+        jedis.set("foo1".getBytes(),SerializeUtil.serialize(foo1));
+        jedis.set("foo11".getBytes(),SerializeUtil.serialize(foo11));
+        jedis.set("foo111".getBytes(),SerializeUtil.serialize(foo111));
+        jedis.set("foo2".getBytes(),SerializeUtil.serialize(foo2));
+
+
+        Set<String> key_set = jedis.keys("foo1*");
+        System.out.println(key_set);
+
+        for(String key : key_set){
+            System.out.println(SerializeUtil.unserialize(jedis.get(key.getBytes())));
+        }
+
     }
 
 

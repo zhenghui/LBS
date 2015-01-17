@@ -12,6 +12,8 @@
     <properties>
         <jedis-version>2.6.1</jedis-version>
         <junit-version>4.11</junit-version>
+        <spring.version>2.5.6</spring.version>
+        <zhenghui.base.version>1.0-SNAPSHOT</zhenghui.base.version>
     </properties>
 
     <name>lbs-framework</name>
@@ -30,7 +32,20 @@
 
     <modules>
         <module>base</module>
+        <module>service</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -40,6 +55,37 @@
                 <version>${jedis-version}</version>
                 <type>jar</type>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>zhenghui</groupId>
+                <artifactId>base</artifactId>
+                <version>${zhenghui.base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>15.0-rc1</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
