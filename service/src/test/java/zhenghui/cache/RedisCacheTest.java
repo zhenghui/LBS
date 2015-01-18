@@ -101,6 +101,27 @@ public class RedisCacheTest {
             System.out.println(SerializeUtil.unserialize(jedis.get(key.getBytes())));
         }
 
+
+    }
+
+    @Test
+    public void testPreifxGetByHget() throws InterruptedException {
+        Foo foo1 = new Foo().setName("foo1");
+        Foo foo11 = new Foo().setName("foo11");
+        Foo foo111 = new Foo().setName("foo111");
+        jedis.hset("foo1".getBytes(),"1".getBytes(),SerializeUtil.serialize(foo1));
+        jedis.hset("foo1".getBytes(),"11".getBytes(),SerializeUtil.serialize(foo11));
+        jedis.hset("foo1".getBytes(),"111".getBytes(),SerializeUtil.serialize(foo111));
+        Map<byte[], byte[]> map = jedis.hgetAll("foo1".getBytes());
+        for(byte[] key : map.keySet()){
+            System.out.println(new String(key)+ "-" + SerializeUtil.unserialize(map.get(key)));
+        }
+        jedis.expire("foo1_1",1);
+        Thread.sleep(3000);
+        map = jedis.hgetAll("foo1".getBytes());
+        for(byte[] key : map.keySet()){
+            System.out.println(new String(key)+ "-" + SerializeUtil.unserialize(map.get(key)));
+        }
     }
 
 
